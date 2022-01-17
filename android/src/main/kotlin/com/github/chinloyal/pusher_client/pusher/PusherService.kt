@@ -126,6 +126,7 @@ class PusherService : MChannel {
 
     private fun disconnect(result: Result) {
         _pusherInstance?.disconnect()
+        _pusherInstance = null
         debugLog("Disconnect")
         result.success(null)
     }
@@ -174,7 +175,7 @@ class PusherService : MChannel {
     private fun unsubscribe(call: MethodCall, result: Result) {
         try {
             val src = call.arguments as Map<String, Any>
-            val args = JSONObject(src);
+            val args = JSONObject(src)
             val channelName = args.getString("channelName")
 
             _pusherInstance?.unsubscribe(channelName)

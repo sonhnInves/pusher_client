@@ -2,6 +2,7 @@ package com.github.chinloyal.pusher_client.pusher.listeners
 
 import com.github.chinloyal.pusher_client.core.utils.Constants
 import com.github.chinloyal.pusher_client.pusher.PusherService
+import com.google.gson.Gson
 import com.pusher.client.channel.PresenceChannelEventListener
 import com.pusher.client.channel.PusherEvent
 import com.pusher.client.channel.User
@@ -17,7 +18,7 @@ class FlutterPresenceChannelEventListener: FlutterBaseChannelEventListener(), Pr
                 "event" to Constants.SUBSCRIPTION_SUCCEEDED.value,
                 "channel" to channelName,
                 "user_id" to null,
-                "data" to users.toString()
+                "data" to Gson().toJson(users)
         )))
     }
 
