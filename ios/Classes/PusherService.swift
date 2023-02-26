@@ -149,7 +149,7 @@ class PusherService: MChannel {
         let channelMap = call.arguments as! [String: String]
         let channelName: String = channelMap["channelName"]!
         
-        _pusherInstance!.unsubscribe(channelName)
+        _pusherInstance?.unsubscribe(channelName)
         Utils.debugLog(msg: "Unsubscribed: \(channelName)")
         
         result(nil)
@@ -185,11 +185,11 @@ class PusherService: MChannel {
         
         if(callBackId != nil) {
             if(!channelName.starts(with: PusherService.PRESENCE_PREFIX)) {
-                channel = _pusherInstance!.connection.channels.find(name: channelName)!
-                channel.unbind(eventName: eventName, callbackId: callBackId!)
+                channel = _pusherInstance?.connection.channels.find(name: channelName)
+                channel?.unbind(eventName: eventName, callbackId: callBackId!)
             } else {
-                channel = _pusherInstance!.connection.channels.findPresence(name: channelName)!
-                channel.unbind(eventName: eventName, callbackId: callBackId!)
+                channel = _pusherInstance?.connection.channels.findPresence(name: channelName)
+                channel?.unbind(eventName: eventName, callbackId: callBackId!)
             }
         }
         
