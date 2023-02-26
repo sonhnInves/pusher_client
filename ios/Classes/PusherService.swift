@@ -162,13 +162,12 @@ class PusherService: MChannel {
         let map = call.arguments as! [String: String]
         let channelName: String = map["channelName"]!
         let eventName: String = map["eventName"]!
-        var channel: PusherChannel
-        
+
         if(!channelName.starts(with: PusherService.PRESENCE_PREFIX)) {
-            channel = _pusherInstance!.connection.channels.find(name: channelName)!
+            let channel = _pusherInstance!.connection.channels.find(name: channelName)!
             bindedEvents[channelName + eventName] = channel.bind(eventName: eventName, eventCallback: ChannelEventListener.default.onEvent)
         } else {
-            channel = _pusherInstance!.connection.channels.findPresence(name: channelName)!
+            let channel = _pusherInstance!.connection.channels.findPresence(name: channelName)!
             bindedEvents[channelName + eventName] = channel.bind(eventName: eventName, eventCallback: ChannelEventListener.default.onEvent)
         }
         
@@ -180,15 +179,14 @@ class PusherService: MChannel {
         let map = call.arguments as! [String: String]
         let channelName: String = map["channelName"]!
         let eventName: String = map["eventName"]!
-        var channel: PusherChannel
         let callBackId = bindedEvents[channelName + eventName]
         
         if(callBackId != nil) {
             if(!channelName.starts(with: PusherService.PRESENCE_PREFIX)) {
-                channel = _pusherInstance?.connection.channels.find(name: channelName)
+                let channel = _pusherInstance?.connection.channels.find(name: channelName)
                 channel?.unbind(eventName: eventName, callbackId: callBackId!)
             } else {
-                channel = _pusherInstance?.connection.channels.findPresence(name: channelName)
+                let channel = _pusherInstance?.connection.channels.findPresence(name: channelName)
                 channel?.unbind(eventName: eventName, callbackId: callBackId!)
             }
         }
