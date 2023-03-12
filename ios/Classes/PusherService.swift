@@ -112,7 +112,7 @@ class PusherService: MChannel {
     }
     
     func getSocketId(result:@escaping FlutterResult) {
-        result(_pusherInstance!.connection.socketId)
+        result(_pusherInstance?.connection.socketId)
     }
     
     func subscribe(_ call:FlutterMethodCall, result:@escaping FlutterResult) {
