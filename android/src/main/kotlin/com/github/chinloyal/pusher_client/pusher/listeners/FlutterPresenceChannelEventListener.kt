@@ -23,7 +23,7 @@ class FlutterPresenceChannelEventListener: FlutterBaseChannelEventListener(), Pr
     }
 
     override fun userUnsubscribed(channelName: String, user: User) {
-        android.util.Log.d(TAG, "INVESTIDEA TEST - userUnsubscribed: " + channelName)
+        android.util.Log.d("INVESTIDEA TEST", "userUnsubscribed: " + channelName)
         this.onEvent(PusherEvent(mapOf(
                 "event" to Constants.MEMBER_REMOVED.value,
                 "channel" to channelName,
