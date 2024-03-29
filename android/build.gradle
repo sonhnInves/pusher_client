@@ -38,13 +38,13 @@ android {
     }
 
     dependencies {
-//        implementation fileTree(includes: ['*.jar'],dir: '~/libs')
+        // implementation "com.pusher:pusher-java-client:2.2.8"
     }
 }
 
 dependencies {
+    implementation "com.google.code.gson:gson:2.8.9"
+    implementation "org.java-websocket:Java-WebSocket:1.5.1"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation files('libs/pusher-websocket-java-2.2.8-with-dependencies.jar') {
-        exclude group : 'com.google.code.gson' // Not com.android.somelib.someclass
-    }
+    implementation files('libs/pusher-websocket-java-2.2.8-2.2.8.jar')
 }
